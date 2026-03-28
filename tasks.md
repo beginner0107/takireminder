@@ -8,7 +8,7 @@
 - [x] H2 데이터베이스 연결 및 콘솔 접근 확인
 
 ### 1-2. ReminderList 도메인
-- [ ] `ReminderList` JPA Entity 작성 (id, name, color, createdAt, updatedAt)
+- [x] `ReminderList` JPA Entity 작성 (id, name, color, createdAt, updatedAt)
 - [ ] `ReminderListRepository` 인터페이스 작성 (JpaRepository 상속)
 - [ ] `ReminderListService` 작성 (전체 조회, 단건 조회, 생성, 수정, 삭제)
 - [ ] `ReminderListController` 작성
