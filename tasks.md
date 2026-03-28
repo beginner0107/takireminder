@@ -4,8 +4,8 @@
 
 ### 1-1. 프로젝트 설정
 - [x] Spring Boot 프로젝트 초기화 (build.gradle.kts, application.yml)
-- [ ] `WebMvcConfigurer` 구현하여 CORS 설정 (localhost:3000 허용)
-- [ ] H2 데이터베이스 연결 및 콘솔 접근 확인
+- [x] `WebMvcConfigurer` 구현하여 CORS 설정 (localhost:3000 허용)
+- [x] H2 데이터베이스 연결 및 콘솔 접근 확인
 
 ### 1-2. ReminderList 도메인
 - [ ] `ReminderList` JPA Entity 작성 (id, name, color, createdAt, updatedAt)
