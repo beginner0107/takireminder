@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ReminderList } from '@/lib/types';
 import { listApi } from '@/lib/api';
 import Sidebar from '@/components/Sidebar';
+import ReminderListView from '@/components/ReminderListView';
 
 export default function Home() {
   const [lists, setLists] = useState<ReminderList[]>([]);
@@ -18,6 +19,14 @@ export default function Home() {
     loadLists();
   }, [loadLists]);
 
+  const selectedList = selectedId?.startsWith('list-')
+    ? lists.find((l) => l.id === Number(selectedId.replace('list-', '')))
+    : null;
+
+  const smartListTitle = selectedId
+    ? { today: '오늘', scheduled: '예정', all: '전체', completed: '완료됨' }[selectedId]
+    : null;
+
   return (
     <div className="flex h-full">
       <Sidebar
@@ -27,14 +36,19 @@ export default function Home() {
         onListsChange={loadLists}
       />
 
-      <main className="flex-1 overflow-y-auto p-8">
-        {selectedId ? (
-          <div>
-            <h1 className="text-4xl font-bold">
-              {selectedId.startsWith('list-')
-                ? lists.find((l) => l.id === Number(selectedId.replace('list-', '')))?.name
-                : { today: '오늘', scheduled: '예정', all: '전체', completed: '완료됨' }[selectedId]}
-            </h1>
+      <main className="flex-1 overflow-hidden">
+        {selectedList ? (
+          <ReminderListView
+            list={selectedList}
+            allLists={lists}
+            onListsChange={loadLists}
+          />
+        ) : smartListTitle ? (
+          <div className="p-8">
+            <h1 className="text-4xl font-bold">{smartListTitle}</h1>
+            <p className="mt-4 text-sm" style={{ color: 'var(--color-secondary)' }}>
+              Phase 4에서 구현 예정
+            </p>
           </div>
         ) : (
           <div className="flex h-full items-center justify-center" style={{ color: 'var(--color-secondary)' }}>
