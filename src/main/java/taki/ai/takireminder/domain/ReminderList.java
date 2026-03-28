@@ -29,6 +29,9 @@ public class ReminderList {
     @Column(nullable = false)
     private String color;
 
+    @Column(nullable = false)
+    private boolean defaultList;
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -36,9 +39,10 @@ public class ReminderList {
     private LocalDateTime updatedAt;
 
     @Builder
-    public ReminderList(String name, String color) {
+    public ReminderList(String name, String color, boolean defaultList) {
         this.name = name;
         this.color = color;
+        this.defaultList = defaultList;
         LocalDateTime now = LocalDateTime.now();
         this.createdAt = now;
         this.updatedAt = now;

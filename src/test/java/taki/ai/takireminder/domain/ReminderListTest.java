@@ -19,6 +19,19 @@ class ReminderListTest {
 
         assertThat(list.getName()).isEqualTo("개인");
         assertThat(list.getColor()).isEqualTo("#FF6B6B");
+        assertThat(list.isDefaultList()).isFalse();
+    }
+
+    @Test
+    @DisplayName("defaultList를 true로 생성하면 기본 목록이 된다")
+    void createDefaultList() {
+        ReminderList list = ReminderList.builder()
+                .name("미리 알림")
+                .color("#007AFF")
+                .defaultList(true)
+                .build();
+
+        assertThat(list.isDefaultList()).isTrue();
     }
 
     @Test

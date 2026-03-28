@@ -9,8 +9,8 @@
 
 ### 1-2. ReminderList 도메인
 - [x] `ReminderList` JPA Entity 작성 (id, name, color, createdAt, updatedAt)
-- [ ] `ReminderListRepository` 인터페이스 작성 (JpaRepository 상속)
-- [ ] `ReminderListService` 작성 (전체 조회, 단건 조회, 생성, 수정, 삭제)
+- [x] `ReminderListRepository` 인터페이스 작성 (JpaRepository 상속)
+- [x] `ReminderListService` 작성 (전체 조회, 단건 조회, 생성, 수정, 삭제)
 - [ ] `ReminderListController` 작성
   - [ ] `GET /api/lists` — 전체 리스트 조회 (미완료 카운트 포함)
   - [ ] `POST /api/lists` — 리스트 생성
