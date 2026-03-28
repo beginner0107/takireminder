@@ -18,21 +18,21 @@
   - [x] `DELETE /api/lists/{id}` — 리스트 삭제 (소속 리마인더 cascade)
 
 ### 1-3. Reminder 도메인
-- [ ] `Priority` Enum 작성 (NONE, LOW, MEDIUM, HIGH)
-- [ ] `Reminder` JPA Entity 작성 (id, title, notes, dueDate, priority, completed, completedAt, list 연관관계, createdAt, updatedAt)
-- [ ] `ReminderRepository` 인터페이스 작성 (JpaRepository 상속 + 커스텀 쿼리)
-- [ ] `ReminderService` 작성 (리스트별 조회, 생성, 수정, 완료 토글, 삭제)
-- [ ] `ReminderController` 작성
-  - [ ] `GET /api/lists/{listId}/reminders` — 리스트별 리마인더 조회
-  - [ ] `POST /api/lists/{listId}/reminders` — 리마인더 생성
-  - [ ] `PUT /api/reminders/{id}` — 리마인더 수정
-  - [ ] `PATCH /api/reminders/{id}/complete` — 완료 토글
-  - [ ] `DELETE /api/reminders/{id}` — 리마인더 삭제
+- [x] `Priority` Enum 작성 (NONE, LOW, MEDIUM, HIGH)
+- [x] `Reminder` JPA Entity 작성 (id, title, notes, dueDate, priority, completed, completedAt, list 연관관계, createdAt, updatedAt)
+- [x] `ReminderRepository` 인터페이스 작성 (JpaRepository 상속 + 커스텀 쿼리)
+- [x] `ReminderService` 작성 (리스트별 조회, 생성, 수정, 완료 토글, 삭제)
+- [x] `ReminderController` 작성
+  - [x] `GET /api/lists/{listId}/reminders` — 리스트별 리마인더 조회
+  - [x] `POST /api/lists/{listId}/reminders` — 리마인더 생성
+  - [x] `PUT /api/reminders/{id}` — 리마인더 수정
+  - [x] `PATCH /api/reminders/{id}/complete` — 완료 토글
+  - [x] `DELETE /api/reminders/{id}` — 리마인더 삭제
 
 ### 1-4. 초기 데이터 & 검증
-- [ ] `data.sql` 작성 (샘플 리스트 3개 + 리마인더 10개)
-- [ ] H2 Console에서 데이터 확인
-- [ ] cURL로 전체 API 엔드포인트 동작 검증
+- [x] `data.sql` 작성 (샘플 리스트 3개 + 리마인더 10개)
+- [x] H2 Console에서 데이터 확인
+- [x] cURL로 전체 API 엔드포인트 동작 검증
 
 ---
 
