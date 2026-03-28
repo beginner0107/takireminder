@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --color-sidebar: #F2F2F7;
+  --color-background: #FFFFFF;
+  --color-foreground: #1C1C1E;
+  --color-accent: #007AFF;
+  --color-secondary: #8E8E93;
+  --color-separator: #C6C6C8;
+  --color-hover: #E5E5EA;
+
+  --smart-today: #007AFF;
+  --smart-scheduled: #FF3B30;
+  --smart-all: #1C1C1E;
+  --smart-completed: #8E8E93;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  margin: 0;
+}
