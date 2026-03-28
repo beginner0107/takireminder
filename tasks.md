@@ -11,11 +11,11 @@
 - [x] `ReminderList` JPA Entity 작성 (id, name, color, createdAt, updatedAt)
 - [x] `ReminderListRepository` 인터페이스 작성 (JpaRepository 상속)
 - [x] `ReminderListService` 작성 (전체 조회, 단건 조회, 생성, 수정, 삭제)
-- [ ] `ReminderListController` 작성
-  - [ ] `GET /api/lists` — 전체 리스트 조회 (미완료 카운트 포함)
-  - [ ] `POST /api/lists` — 리스트 생성
-  - [ ] `PUT /api/lists/{id}` — 리스트 수정
-  - [ ] `DELETE /api/lists/{id}` — 리스트 삭제 (소속 리마인더 cascade)
+- [x] `ReminderListController` 작성
+  - [x] `GET /api/lists` — 전체 리스트 조회 (미완료 카운트 포함)
+  - [x] `POST /api/lists` — 리스트 생성
+  - [x] `PUT /api/lists/{id}` — 리스트 수정
+  - [x] `DELETE /api/lists/{id}` — 리스트 삭제 (소속 리마인더 cascade)
 
 ### 1-3. Reminder 도메인
 - [ ] `Priority` Enum 작성 (NONE, LOW, MEDIUM, HIGH)

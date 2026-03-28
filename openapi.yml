@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: TakiReminder API
+  description: Apple Reminders 스타일 웹 리마인더 앱 API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+paths:
+  /api/lists:
+    get:
+      summary: 전체 리스트 조회
+      description: 모든 리마인더 리스트를 조���한다. 각 리스트별 미완료 카운트를 포함한다.
+      operationId: findAllLists
+      tags:
+        - ReminderList
+      responses:
+        "200":
+          description: 리���트 목록
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReminderListResponse"
+
+    post:
+      summary: 리스트 생성
+      operationId: createList
+      tags:
+        - ReminderList
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReminderListRequest"
+      responses:
+        "201":
+          description: 생성된 리스트
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReminderListResponse"
+        "400":
+          description: 유효하지 않은 요청
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetail"
+
+  /api/lists/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+
+    get:
+      summary: 리스트 단건 조회
+      operationId: findListById
+      tags:
+        - ReminderList
+      responses:
+        "200":
+          description: 리스트 정보
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReminderListResponse"
+        "404":
+          description: 리스트를 찾을 수 없음
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetail"
+
+    put:
+      summary: 리스트 수정
+      operationId: updateList
+      tags:
+        - ReminderList
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReminderListRequest"
+      responses:
+        "200":
+          description: 수정된 리스트
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReminderListResponse"
+        "400":
+          description: 유효하지 않은 요청
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetail"
+        "404":
+          description: 리스트를 찾을 수 없음
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetail"
+
+    delete:
+      summary: 리스트 삭제
+      description: 리스트와 소속 리마인더를 함께 삭제한다. 기본 목록은 삭제할 수 없다.
+      operationId: deleteList
+      tags:
+        - ReminderList
+      responses:
+        "204":
+          description: 삭제 완료
+        "400":
+          description: 기본 목록은 삭제할 수 없음
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetail"
+        "404":
+          description: 리스트를 찾을 수 없음
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetail"
+
+components:
+  schemas:
+    ReminderListRequest:
+      type: object
+      required:
+        - name
+        - color
+      properties:
+        name:
+          type: string
+          description: 리스트 이름
+          example: 개인
+        color:
+          type: string
+          description: HEX 색상코드
+          example: "#FF6B6B"
+
+    ReminderListResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: 리스트 ID
+          example: 1
+        name:
+          type: string
+          description: 리스트 이름
+          example: 개인
+        color:
+          type: string
+          description: HEX 색상코드
+          example: "#FF6B6B"
+        defaultList:
+          type: boolean
+          description: 기본 목록 여부
+          example: false
+        incompleteCount:
+          type: integer
+          description: 미완료 리마인더 수
+          example: 3
+        createdAt:
+          type: string
+          format: date-time
+          description: 생성일시
+        updatedAt:
+          type: string
+          format: date-time
+          description: 수정일시
+
+    ProblemDetail:
+      type: object
+      description: RFC 9457 Problem Details
+      properties:
+        type:
+          type: string
+          example: about:blank
+        title:
+          type: string
+          example: Not Found
+        status:
+          type: integer
+          example: 404
+        detail:
+          type: string
+          example: 리스트를 찾을 수 없습니다. id=999
+        instance:
+          type: string
+          example: /api/lists/999
